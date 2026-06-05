@@ -60,9 +60,17 @@ Do this part in a **web browser on your laptop**:
 5. Click **Generate token**.
 6. **Copy the token now.** It starts with `ghp_...`. GitHub shows it only once. If you lose it, you make a new one.
 
-## Step 2: Push using the token
+## Step 2: Tell git to save your token first
 
-Back on the HPC, push as usual:
+Do this **before** you push, so you only ever type the token once. This turns on credential storage:
+
+```bash
+git config --global credential.helper store
+```
+
+## Step 3: Push (and enter the token this one time)
+
+Now push as usual:
 
 ```bash
 git push origin main
@@ -75,18 +83,9 @@ When prompted:
 
 > Pasting into a terminal usually does nothing visible. That is expected. Paste and press Enter.
 
-That is it. Your commit goes up.
+Because you turned on storage in Step 2, git saves the token to `~/.git-credentials` and **never asks again**, from any node. Your commit goes up.
 
-## Step 3: Save it so you never retype it
-
-By default git asks every push. To store the token once and reuse it forever:
-
-```bash
-git config --global credential.helper store
-git push origin main
-```
-
-Enter your username and token **one more time**. After that, git saves it to `~/.git-credentials` and never asks again, from any node.
+## Step 4: Secure the saved token
 
 Lock the file down so others on the system cannot read it:
 
