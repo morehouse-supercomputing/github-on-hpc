@@ -7,10 +7,9 @@ title: GitHub Authentication on HPC
 
 When you try to `git push` from a TACC compute node, you will hit an error like this:
 
-```
-remote: Invalid username or token. Password authentication is not supported for Git operations.
-fatal: Authentication failed for 'https://github.com/.../your-repo.git'
-```
+> **remote:** Invalid username or token. Password authentication is not supported for Git operations.
+>
+> **fatal:** Authentication failed for `https://github.com/.../your-repo.git`
 
 This is normal. Two things are going on:
 
