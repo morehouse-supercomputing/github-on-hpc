@@ -26,12 +26,14 @@ This guide fixes both. **Method 1 (token)** is the recommended path on TACC and 
 
 ### Set your git identity
 
-This clears the "Committer ... configured automatically" warning and puts your real name on commits. Use the **same email you signed up for TACC with** (you do not need a Morehouse address):
+This clears the "Committer ... configured automatically" warning and puts your real name on commits:
 
 ```bash
 git config --global user.name "Your Name"
-git config --global user.email "your-tacc-email@example.com"
+git config --global user.email "you@example.com"
 ```
+
+*Use the email you used to sign up for TACC. You do not need a Morehouse address.*
 
 ### Stop the pop-up password box
 
@@ -107,8 +109,10 @@ An SSH key is a pair of files: a private key that stays on the HPC and a public 
 On the HPC:
 
 ```bash
-ssh-keygen -t ed25519 -C "your-tacc-email@example.com"
+ssh-keygen -t ed25519 -C "you@example.com"
 ```
+
+*Use the email you used to sign up for TACC.*
 
 Press **Enter** through all the prompts (accept the default location, leave the passphrase blank for unattended pushing).
 
@@ -159,11 +163,11 @@ Then `git push origin main` again. If this still fails, fall back to Method 1, w
 | Task | Command |
 |------|---------|
 | Set identity | `git config --global user.name "Your Name"` |
-| Set email | `git config --global user.email "your-tacc-email@example.com"` |
+| Set email | `git config --global user.email "you@example.com"` |
 | Stop pop-up prompt | `unset SSH_ASKPASS` |
 | Save token permanently | `git config --global credential.helper store` |
 | Secure the saved token | `chmod 600 ~/.git-credentials` |
-| Make an SSH key | `ssh-keygen -t ed25519 -C "your-tacc-email@example.com"` |
+| Make an SSH key | `ssh-keygen -t ed25519 -C "you@example.com"` |
 | Show public key | `cat ~/.ssh/id_ed25519.pub` |
 | Switch repo to SSH | `git remote set-url origin git@github.com:ORG/REPO.git` |
 
