@@ -26,11 +26,11 @@ This guide fixes both. **Method 1 (token)** is the recommended path on TACC and 
 
 ### Set your git identity
 
-This clears the "Committer ... configured automatically" warning and puts your real name on commits:
+This clears the "Committer ... configured automatically" warning and puts your real name on commits. Use the **same email you signed up for TACC with** (you do not need a Morehouse address):
 
 ```bash
 git config --global user.name "Your Name"
-git config --global user.email "you@morehouse.edu"
+git config --global user.email "your-tacc-email@example.com"
 ```
 
 ### Stop the pop-up password box
@@ -51,15 +51,12 @@ A Personal Access Token (PAT) is a long password-like string from GitHub that yo
 
 Do this part in a **web browser on your laptop**:
 
-1. Go to GitHub and sign in.
-2. Click your profile picture (top right) → **Settings**.
-3. In the left menu, scroll down to **Developer settings**.
-4. Click **Personal access tokens → Tokens (classic)**.
-5. Click **Generate new token → Generate new token (classic)**.
-6. Give it a name (e.g. `tacc-vista`), set **Expiration** to **No expiration** (or a long window so you are not redoing this constantly).
-7. Check the **`repo`** box (this grants push/pull access).
-8. Click **Generate token**.
-9. **Copy the token now.** It starts with `ghp_...`. GitHub shows it only once. If you lose it, you make a new one.
+1. Go straight to **[github.com/settings/tokens](https://github.com/settings/tokens)** and sign in. (Or navigate there yourself: profile picture → **Settings → Developer settings → Personal access tokens → Tokens (classic)**.)
+2. Click **Generate new token → Generate new token (classic)**.
+3. Give it a name (e.g. `tacc-vista`), set **Expiration** to **No expiration** (or a long window so you are not redoing this constantly).
+4. Check the **`repo`** box (this grants push/pull access).
+5. Click **Generate token**.
+6. **Copy the token now.** It starts with `ghp_...`. GitHub shows it only once. If you lose it, you make a new one.
 
 ## Step 2: Push using the token
 
@@ -110,7 +107,7 @@ An SSH key is a pair of files: a private key that stays on the HPC and a public 
 On the HPC:
 
 ```bash
-ssh-keygen -t ed25519 -C "you@morehouse.edu"
+ssh-keygen -t ed25519 -C "your-tacc-email@example.com"
 ```
 
 Press **Enter** through all the prompts (accept the default location, leave the passphrase blank for unattended pushing).
@@ -162,11 +159,11 @@ Then `git push origin main` again. If this still fails, fall back to Method 1, w
 | Task | Command |
 |------|---------|
 | Set identity | `git config --global user.name "Your Name"` |
-| Set email | `git config --global user.email "you@morehouse.edu"` |
+| Set email | `git config --global user.email "your-tacc-email@example.com"` |
 | Stop pop-up prompt | `unset SSH_ASKPASS` |
 | Save token permanently | `git config --global credential.helper store` |
 | Secure the saved token | `chmod 600 ~/.git-credentials` |
-| Make an SSH key | `ssh-keygen -t ed25519 -C "you@morehouse.edu"` |
+| Make an SSH key | `ssh-keygen -t ed25519 -C "your-tacc-email@example.com"` |
 | Show public key | `cat ~/.ssh/id_ed25519.pub` |
 | Switch repo to SSH | `git remote set-url origin git@github.com:ORG/REPO.git` |
 
